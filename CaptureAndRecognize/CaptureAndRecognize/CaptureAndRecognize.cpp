@@ -3,27 +3,33 @@
 
 #include "stdafx.h"
 
+_fnInitEngine pFnInitEngine;
+_fnCaliberateCamera pFnCaliberateCamera;
+_fnRecognizeChars pFnRecognizeChars;
+_fnFreeEngine pFnFreeEngine;
+_fnEngineVersionInfo pFnEngineVersionInfo;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	// Open the file.
-	IplImage *img = cvLoadImage("fourCorners.bmp");
-	if (!img)
-	{
-		printf("Error: Couldn't open the image file.\n");
-		return 1;
-	}
+	TCHAR strEnginesFilePath[MAX_FILE_PATH];
+	TCHAR strFolderPath[MAX_FILE_PATH]={0};
+	GetModuleFileName(NULL, strFolderPath, _MAX_PATH); 
+	*wcsrchr(strFolderPath,'\\') = '\0';
+	wcscpy(strEnginesFilePath,strFolderPath);
+	wcscat(strEnginesFilePath,L"\\OCRtoyDLL.dll");
 
-	// Display the image.
-	cvNamedWindow("Image:", CV_WINDOW_AUTOSIZE);
-	cvShowImage("Image:", img);
+	HINSTANCE m_HIDevRecEngineDLL = LoadLibrary(strEnginesFilePath);
 
-	// Wait for the user to press a key in the GUI window.
-	cvWaitKey(0);
+	if (m_HIDevRecEngineDLL == NULL) return 0;
 
-	// Free the resources.
-	cvDestroyWindow("Image:");
-	cvReleaseImage(&img);
+	pFnInitEngine        = (_fnInitEngine)GetProcAddress(m_HIDevRecEngineDLL,"fn_InitEngine");
+	pFnCaliberateCamera  = (_fnCaliberateCamera)GetProcAddress(m_HIDevRecEngineDLL,"fn_CaliberateCamera");
+	pFnRecognizeChars    = (_fnRecognizeChars)GetProcAddress(m_HIDevRecEngineDLL,"fn_RecognizeChars");
+	pFnFreeEngine        = (_fnFreeEngine)GetProcAddress(m_HIDevRecEngineDLL,"fn_FreeEngine");
+	pFnEngineVersionInfo = (_fnEngineVersionInfo)GetProcAddress(m_HIDevRecEngineDLL,"fn_EngineVersionInfo");
+
+	FreeLibrary(m_HIDevRecEngineDLL);
+	m_HIDevRecEngineDLL = NULL;
 
 	return 0;
 }
