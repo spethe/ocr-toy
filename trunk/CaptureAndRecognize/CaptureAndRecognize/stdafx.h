@@ -14,5 +14,11 @@
 #include <cxcore.h>
 #include <highgui.h>
 
+#include "Toy.h"
+typedef void (*_fnInitEngine)();
+typedef int  (*_fnRecognizeChars)(IplImage* inputImage,int fAlphaNumeral,g_OCRCharInfo** g_OutputCharInfoAll);
+typedef int  (*_fnCaliberateCamera)(IplImage* inputImage,g_Resolution cameraReso,g_Resolution screenResolution);
+typedef void (*_fnFreeEngine)();
+typedef char*(*_fnEngineVersionInfo)();
 
-// TODO: reference additional headers your program requires here
+#define MAX_FILE_PATH 256
