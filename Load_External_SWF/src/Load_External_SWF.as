@@ -33,7 +33,7 @@ package
 		{
 			//unload content
 			if (mLoader.content != null)
-			{   
+			{
 				mLoader.unload();
 			}
 			
@@ -50,36 +50,36 @@ package
 					playSWF("animations/D-damdar.swf");
 					break;
 				case Keyboard.F :
-					playSWF("animations/D-damdar.swf");
+					playSWF("animations/F-fawaara.swf");
 					break;
 				case Keyboard.G :
 					playSWF("animations/G-gamla.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.J :
 					playSWF("animations/J-jahaj.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.K :
 					playSWF("animations/K-kabutar.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.L :
 					playSWF("animations/L-laddoo.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.M :
 					playSWF("animations/M-makdi.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.N :
 					playSWF("animations/N-nagar.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.P :
 					playSWF("animations/P-pari.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.S :
 					playSWF("animations/Sh-shatkon.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.T :
 					playSWF("animations/T-tabla.swf");
 					break;
-				case Keyboard.D :
+				case Keyboard.V :
 					playSWF("animations/V-van.swf");
 					break;
 			}
