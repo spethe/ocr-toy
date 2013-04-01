@@ -66,7 +66,9 @@ int doSomething()
 
 	int calibrationFlag = pFnCaliberateCamera(curr_frame, cameraResolution, screenResolution);
 	if(calibrationFlag == 1)
+	{
 		printf("caliberation done\n");
+	}
 	else
 	{
 		printf("caliberation failed\n");
@@ -80,7 +82,9 @@ int doSomething()
 	int recog=0;
 	g_OCRCharInfo *g_Output=(g_OCRCharInfo *)malloc(sizeof(g_OCRCharInfo));
 	if(g_Output==NULL)
+	{
 		printf("Mem allocation problem");
+	}
 
 	while (true)
 	{

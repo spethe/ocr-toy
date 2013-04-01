@@ -88,6 +88,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="copy &quot;$(ProjectDir)\resources&quot; &quot;$(TargetDir)\resources&quot;"
 			/>
 		</Configuration>
 		<Configuration
